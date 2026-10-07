@@ -1,0 +1,1458 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
+:root {
+  --cream: #fff8ef;
+  --cream-dark: #f4e9da;
+  --red: #ff4b35;
+  --orange: #ff9e3d;
+  --purple: #7655ff;
+  --lime: #d8ff4d;
+  --pink: #f5b6c8;
+  --black: #17121b;
+  --plum: #21142f;
+  --white: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  background: var(--cream);
+  color: var(--black);
+  font-family: "DM Sans", sans-serif;
+  overflow-x: hidden;
+}
+
+button,
+a {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* =========================================================
+   LOADER
+========================================================= */
+
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: var(--cream);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 34px;
+  animation: loaderExit 0.8s ease forwards;
+  animation-delay: 1.65s;
+  pointer-events: none;
+}
+
+.loader-top,
+.loader-bottom {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.loader-center {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+}
+
+.loader-word {
+  overflow: hidden;
+  height: clamp(45px, 7vw, 110px);
+}
+
+.loader-word span {
+  display: block;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(48px, 9vw, 145px);
+  line-height: 0.9;
+  font-weight: 700;
+  letter-spacing: -0.07em;
+  color: var(--black);
+  animation: loaderText 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.loader-word:nth-child(2) span {
+  animation-delay: 0.15s;
+  color: var(--orange);
+}
+
+.loader-final span {
+  color: var(--red);
+  animation-delay: 0.3s;
+}
+
+.loader-progress {
+  width: 100%;
+  height: 3px;
+  background: rgba(23, 18, 27, 0.1);
+  overflow: hidden;
+}
+
+.loader-progress span {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--red);
+  animation: loaderProgress 1.45s ease forwards;
+}
+
+@keyframes loaderText {
+  from {
+    transform: translateY(110%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes loaderProgress {
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes loaderExit {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* =========================================================
+   CURSOR
+========================================================= */
+
+.custom-cursor {
+  position: fixed;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(0, 190, 200, 0.7);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+
+.custom-cursor span {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00b7c2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* =========================================================
+   NAV
+========================================================= */
+
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 30px 4vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+}
+
+.logo {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.06em;
+}
+
+.logo span,
+.footer-logo span {
+  color: var(--red);
+}
+
+.nav-links {
+  display: flex;
+  gap: 36px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.nav-links a {
+  transition: opacity 0.3s ease;
+}
+
+.nav-links a:hover {
+  opacity: 0.45;
+}
+
+.nav-button {
+  padding: 14px 20px;
+  border-radius: 100px;
+  background: var(--black);
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  padding: 150px 5vw 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background:
+    radial-gradient(
+      circle at 82% 25%,
+      rgba(255, 158, 61, 0.3),
+      transparent 27%
+    ),
+    var(--cream);
+}
+
+.hero-kicker {
+  position: absolute;
+  top: 145px;
+  left: 5vw;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  z-index: 5;
+}
+
+.pulse-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--red);
+  margin-right: 9px;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  50% {
+    transform: scale(1.8);
+    opacity: 0.4;
+  }
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 3;
+  width: min(850px, 72vw);
+}
+
+.hero-line {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(55px, 10vw, 155px);
+  font-weight: 700;
+  letter-spacing: -0.085em;
+  line-height: 0.82;
+}
+
+.orange-text {
+  color: var(--orange);
+}
+
+.red-text {
+  color: var(--red);
+}
+
+.period {
+  color: var(--black);
+}
+
+.hero-food {
+  position: absolute;
+  right: 4vw;
+  top: 19%;
+  width: min(37vw, 530px);
+  height: min(37vw, 530px);
+  z-index: 2;
+}
+
+.hero-food-main {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: visible;
+  transform: rotate(-7deg);
+  filter: drop-shadow(0 40px 45px rgba(23, 18, 27, 0.18));
+}
+
+.hero-food-main .food-image-wrap {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 12px solid var(--cream);
+}
+
+.hero-orbit {
+  position: absolute;
+  inset: -25%;
+  border: 1px dashed rgba(23, 18, 27, 0.22);
+  border-radius: 50%;
+  animation: orbit 25s linear infinite;
+  pointer-events: none;
+}
+
+.hero-orbit span {
+  position: absolute;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  background: var(--cream);
+  padding: 5px;
+}
+
+.hero-orbit span:nth-child(1) {
+  top: 0;
+  left: 45%;
+}
+
+.hero-orbit span:nth-child(2) {
+  right: 0;
+  top: 48%;
+}
+
+.hero-orbit span:nth-child(3) {
+  bottom: 0;
+  left: 43%;
+}
+
+@keyframes orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.hero-bottom {
+  position: absolute;
+  left: 5vw;
+  bottom: 45px;
+  right: 5vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  z-index: 5;
+}
+
+.hero-bottom p {
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.hero-cta {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+}
+
+.hero-cta span {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--red);
+  color: white;
+  font-size: 20px;
+}
+
+/* =========================================================
+   FOOD IMAGE
+========================================================= */
+
+.food-image-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.food-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.food-image-wrap:hover img {
+  transform: scale(1.06);
+}
+
+.image-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.18),
+    transparent 45%
+  );
+}
+
+.image-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  background:
+    radial-gradient(circle at 50% 30%, #ffb55d, transparent 30%),
+    linear-gradient(135deg, #ff4b35, #7655ff);
+  color: white;
+}
+
+.image-fallback span {
+  font-size: 70px;
+}
+
+.image-fallback small {
+  font-weight: 700;
+  letter-spacing: 0.15em;
+}
+
+/* =========================================================
+   STEAM
+========================================================= */
+
+.steam-system {
+  position: absolute;
+  left: 50%;
+  top: -5%;
+  width: 150px;
+  height: 180px;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 20;
+}
+
+.steam-particle {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 16px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  filter: blur(7px);
+  opacity: 0;
+  animation:
+    steamRise var(--duration) ease-in-out infinite,
+    steamSway 2.2s ease-in-out infinite alternate;
+  animation-delay: var(--delay);
+}
+
+@keyframes steamRise {
+  0% {
+    transform: translate3d(var(--x), 20px, 0) scale(0.4);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 0.45;
+  }
+
+  70% {
+    opacity: 0.18;
+  }
+
+  100% {
+    transform: translate3d(var(--x), -140px, 0) scale(1.8);
+    opacity: 0;
+  }
+}
+
+@keyframes steamSway {
+  from {
+    margin-left: -15px;
+  }
+
+  to {
+    margin-left: 15px;
+  }
+}
+
+/* =========================================================
+   PARTICLES
+========================================================= */
+
+.particle-field {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  background: rgba(255, 75, 53, 0.35);
+  animation: particleFloat 5s ease-in-out infinite;
+  animation-delay: var(--delay);
+}
+
+@keyframes particleFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-35px);
+  }
+}
+
+/* =========================================================
+   STEAM SECTION
+========================================================= */
+
+.steam-section {
+  min-height: 100vh;
+  padding: 130px 8vw;
+  background: var(--black);
+  color: var(--cream);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8vw;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.eyebrow {
+  display: block;
+  margin-bottom: 25px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+.steam-copy h2 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(65px, 9vw, 140px);
+  line-height: 0.8;
+  letter-spacing: -0.08em;
+}
+
+.steam-copy h2 em {
+  color: var(--orange);
+  font-style: normal;
+}
+
+.steam-copy p {
+  max-width: 360px;
+  margin-top: 40px;
+  color: rgba(255, 248, 239, 0.6);
+  line-height: 1.7;
+}
+
+.steam-food {
+  position: relative;
+  height: 620px;
+  border-radius: 50%;
+  overflow: visible;
+  transform: rotate(6deg);
+}
+
+.steam-food > .food-image-wrap {
+  border-radius: 50%;
+}
+
+.steam-food .steam-system {
+  top: 10%;
+}
+
+/* =========================================================
+   WASTE
+========================================================= */
+
+.waste-section {
+  min-height: 100vh;
+  background: var(--orange);
+  position: relative;
+  overflow: hidden;
+  padding: 130px 7vw;
+}
+
+.waste-background-text {
+  position: absolute;
+  left: -2%;
+  top: 10%;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 28vw;
+  font-weight: 700;
+  line-height: 0.7;
+  color: rgba(255, 255, 255, 0.1);
+  letter-spacing: -0.1em;
+}
+
+.waste-word-container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+}
+
+.waste-word {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(70px, 12vw, 190px);
+  font-weight: 700;
+  line-height: 0.78;
+  letter-spacing: -0.09em;
+}
+
+.waste-food {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  right: 10%;
+  top: 23%;
+  border-radius: 50%;
+  transform: rotate(-12deg);
+  z-index: 4;
+}
+
+.waste-food .food-image-wrap {
+  border-radius: 50%;
+  border: 14px solid var(--orange);
+}
+
+.waste-sticker {
+  position: absolute;
+  right: -45px;
+  bottom: 5px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: var(--purple);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: rotate(15deg);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.waste-sticker strong {
+  font-size: 27px;
+}
+
+.waste-caption {
+  position: absolute;
+  left: 7vw;
+  bottom: 45px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  z-index: 5;
+}
+
+.waste-caption span {
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.waste-caption p {
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+/* =========================================================
+   STORY
+========================================================= */
+
+.story-section {
+  background: var(--cream);
+  padding: 150px 7vw;
+}
+
+.section-label {
+  display: flex;
+  gap: 20px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  margin-bottom: 80px;
+}
+
+.section-label span {
+  color: var(--red);
+}
+
+.story-heading h2 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(60px, 10vw, 150px);
+  line-height: 0.8;
+  letter-spacing: -0.09em;
+}
+
+.story-heading h2 span {
+  color: var(--purple);
+}
+
+.story-heading h2 em {
+  color: var(--red);
+  font-style: normal;
+}
+
+.story-grid {
+  margin-top: 130px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.story-card {
+  min-height: 390px;
+  padding: 35px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.story-card span {
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.story-card h3 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 52px;
+  letter-spacing: -0.06em;
+}
+
+.story-card p {
+  max-width: 260px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.story-dark {
+  background: var(--black);
+  color: white;
+}
+
+.story-orange {
+  background: var(--orange);
+}
+
+.story-purple {
+  background: var(--purple);
+  color: white;
+}
+
+/* =========================================================
+   MARKET
+========================================================= */
+
+.market-section {
+  background: var(--plum);
+  color: var(--cream);
+  padding: 150px 6vw;
+}
+
+.market-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 90px;
+}
+
+.market-top h2 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(65px, 10vw, 150px);
+  line-height: 0.8;
+  letter-spacing: -0.09em;
+}
+
+.market-top h2 span {
+  color: var(--orange);
+}
+
+.market-top p {
+  color: rgba(255, 248, 239, 0.6);
+  line-height: 1.6;
+}
+
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+.food-card {
+  background: var(--cream);
+  color: var(--black);
+  padding: 14px;
+  transform-style: preserve-3d;
+}
+
+.food-card-image {
+  height: 440px;
+  position: relative;
+  overflow: hidden;
+}
+
+.food-badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: var(--red);
+  color: white;
+  padding: 10px 13px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  z-index: 3;
+}
+
+.food-card-content {
+  padding: 25px 10px 10px;
+}
+
+.food-card-type {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--purple);
+}
+
+.food-card h3 {
+  margin-top: 7px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 34px;
+  letter-spacing: -0.05em;
+}
+
+.food-price-row {
+  margin-top: 20px;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.food-price-row strong {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 32px;
+}
+
+.food-price-row del {
+  opacity: 0.35;
+}
+
+.rescue-button {
+  margin-top: 25px;
+  width: 100%;
+  background: var(--black);
+  color: white;
+  padding: 17px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+
+.rescue-button:hover {
+  background: var(--red);
+  transform: translateY(-3px);
+}
+
+.rescue-button span:first-child {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.rescue-button .arrow {
+  font-size: 20px;
+}
+
+/* =========================================================
+   TIME
+========================================================= */
+
+.time-section {
+  min-height: 90vh;
+  position: relative;
+  background: var(--red);
+  color: white;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.time-bg {
+  position: absolute;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 40vw;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.06);
+  line-height: 0.7;
+  transform: rotate(-10deg);
+}
+
+.time-section h2 {
+  position: relative;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(80px, 14vw, 210px);
+  line-height: 0.76;
+  letter-spacing: -0.1em;
+}
+
+.time-section h2 span {
+  color: var(--lime);
+}
+
+.timer-box {
+  position: relative;
+  margin-top: 60px;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.timer-box div {
+  display: flex;
+  flex-direction: column;
+}
+
+.timer-box strong {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 60px;
+  letter-spacing: -0.08em;
+}
+
+.timer-box small {
+  font-size: 8px;
+  letter-spacing: 0.14em;
+}
+
+.timer-box b {
+  font-size: 40px;
+}
+
+.time-section > p {
+  position: relative;
+  margin-top: 30px;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   IMPACT
+========================================================= */
+
+.impact-section {
+  padding: 150px 7vw;
+  background: var(--cream);
+}
+
+.impact-intro h2 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(70px, 12vw, 170px);
+  line-height: 0.76;
+  letter-spacing: -0.09em;
+}
+
+.impact-intro h2 span {
+  color: var(--purple);
+}
+
+.impact-grid {
+  margin-top: 130px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid rgba(23, 18, 27, 0.2);
+}
+
+.impact-item {
+  padding: 40px 20px 20px 0;
+  border-right: 1px solid rgba(23, 18, 27, 0.2);
+}
+
+.impact-item:last-child {
+  border-right: 0;
+  padding-left: 20px;
+}
+
+.impact-number {
+  display: block;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(55px, 8vw, 120px);
+  letter-spacing: -0.09em;
+  color: var(--red);
+}
+
+.impact-item span {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+}
+
+/* =========================================================
+   HOW
+========================================================= */
+
+.how-section {
+  background: var(--black);
+  color: white;
+  padding: 150px 7vw;
+}
+
+.how-title h2 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(80px, 14vw, 210px);
+  line-height: 0.72;
+  letter-spacing: -0.1em;
+  color: var(--orange);
+}
+
+.steps {
+  margin-top: 120px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.step {
+  padding: 35px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  display: grid;
+  grid-template-columns: 100px 1fr;
+}
+
+.step > span {
+  color: var(--orange);
+  font-size: 11px;
+}
+
+.step h3 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 45px;
+  letter-spacing: -0.05em;
+}
+
+.step p {
+  margin-top: 5px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* =========================================================
+   FINAL
+========================================================= */
+
+.final-section {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: var(--cream);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.final-title {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(65px, 13vw, 190px);
+  font-weight: 700;
+  line-height: 0.72;
+  letter-spacing: -0.1em;
+}
+
+.final-button {
+  position: relative;
+  z-index: 3;
+  margin-top: 70px;
+  background: var(--red);
+  color: white;
+  padding: 20px 28px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease;
+}
+
+.final-button span {
+  margin-left: 20px;
+  font-size: 18px;
+}
+
+.final-button:hover {
+  transform: scale(1.08);
+  background: var(--purple);
+}
+
+.final-orbit {
+  position: absolute;
+  width: 650px;
+  height: 650px;
+  border: 1px dashed rgba(23, 18, 27, 0.2);
+  border-radius: 50%;
+  animation: orbit 35s linear infinite;
+}
+
+.final-orbit span {
+  position: absolute;
+  background: var(--lime);
+  padding: 8px 12px;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.final-orbit span:nth-child(1) {
+  top: -10px;
+  left: 45%;
+}
+
+.final-orbit span:nth-child(2) {
+  right: -30px;
+  top: 50%;
+}
+
+.final-orbit span:nth-child(3) {
+  bottom: -10px;
+  left: 40%;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+  padding: 70px 7vw 35px;
+  background: var(--plum);
+  color: var(--cream);
+}
+
+.footer-logo {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 70px;
+  font-weight: 700;
+  letter-spacing: -0.08em;
+}
+
+footer p {
+  margin-top: 25px;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+}
+
+.footer-links {
+  margin-top: 60px;
+  display: flex;
+  gap: 30px;
+}
+
+.footer-links a {
+  font-size: 10px;
+  font-weight: 700;
+}
+
+footer small {
+  display: block;
+  margin-top: 80px;
+  opacity: 0.35;
+  font-size: 9px;
+}
+
+/* =========================================================
+   SUCCESS
+========================================================= */
+
+.rescue-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background: rgba(23, 18, 27, 0.8);
+  backdrop-filter: blur(15px);
+  display: grid;
+  place-items: center;
+  padding: 30px;
+}
+
+.rescue-success {
+  max-width: 600px;
+  width: 100%;
+  padding: 60px;
+  background: var(--cream);
+  text-align: center;
+  animation: successIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes successIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8) rotate(-3deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+.success-icon {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 25px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--lime);
+  font-size: 35px;
+  font-weight: 700;
+}
+
+.rescue-success > span {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+}
+
+.rescue-success h2 {
+  margin-top: 20px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 65px;
+  line-height: 0.85;
+  letter-spacing: -0.07em;
+}
+
+.rescue-success h2 em {
+  color: var(--red);
+  font-style: normal;
+}
+
+.rescue-success p {
+  margin-top: 30px;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 800px) {
+  .custom-cursor {
+    display: none;
+  }
+
+  .navbar {
+    padding: 22px 20px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .nav-button {
+    padding: 11px 14px;
+    font-size: 8px;
+  }
+
+  .hero {
+    min-height: 100svh;
+    padding: 140px 20px 40px;
+  }
+
+  .hero-kicker {
+    top: 110px;
+    left: 20px;
+    font-size: 8px;
+  }
+
+  .hero-copy {
+    width: 100%;
+  }
+
+  .hero-line {
+    font-size: clamp(50px, 16vw, 100px);
+  }
+
+  .hero-food {
+    width: 75vw;
+    height: 75vw;
+    right: -12vw;
+    top: 42%;
+    opacity: 0.9;
+  }
+
+  .hero-bottom {
+    left: 20px;
+    right: 20px;
+    bottom: 25px;
+  }
+
+  .hero-bottom p {
+    display: none;
+  }
+
+  .hero-cta {
+    margin-left: auto;
+  }
+
+  .steam-section {
+    grid-template-columns: 1fr;
+    padding: 100px 25px;
+  }
+
+  .steam-food {
+    height: 350px;
+  }
+
+  .waste-section {
+    padding: 100px 25px;
+  }
+
+  .waste-word {
+    font-size: 19vw;
+  }
+
+  .waste-food {
+    width: 250px;
+    height: 250px;
+    right: 3%;
+    top: 48%;
+  }
+
+  .story-section,
+  .impact-section,
+  .how-section {
+    padding: 100px 25px;
+  }
+
+  .story-grid {
+    grid-template-columns: 1fr;
+    margin-top: 70px;
+  }
+
+  .story-card {
+    min-height: 300px;
+  }
+
+  .market-section {
+    padding: 100px 20px;
+  }
+
+  .market-top {
+    display: block;
+  }
+
+  .market-top p {
+    margin-top: 30px;
+  }
+
+  .food-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .food-card-image {
+    height: 350px;
+  }
+
+  .impact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .impact-item {
+    border-right: 0;
+    border-bottom: 1px solid rgba(23, 18, 27, 0.2);
+    padding: 35px 0;
+  }
+
+  .impact-item:last-child {
+    padding-left: 0;
+  }
+
+  .step {
+    grid-template-columns: 50px 1fr;
+  }
+
+  .step h3 {
+    font-size: 32px;
+  }
+
+  .final-title {
+    font-size: 18vw;
+  }
+
+  .final-orbit {
+    width: 350px;
+    height: 350px;
+  }
+
+  .footer-logo {
+    font-size: 50px;
+  }
+
+  .rescue-success {
+    padding: 40px 25px;
+  }
+
+  .rescue-success h2 {
+    font-size: 45px;
+  }
+}
